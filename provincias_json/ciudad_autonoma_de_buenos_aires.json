@@ -1,0 +1,15 @@
+{
+    "iso_3166_2": "AR-C",
+    "provincia": "Ciudad Autonoma de Buenos Aires",
+    "localidades": [
+        {
+            "id": 5001,
+            "nombre": "CIUDAD AUTONOMA BUENOS AIRES",
+            "partido": "CAPITAL FEDERAL",
+            "municipio": null,
+            "cp": null,
+            "latitud": null,
+            "longitud": null
+        }
+    ]
+}
