@@ -53,8 +53,8 @@ def to_json(output_dir, provinces):
 
             json.dump(data, file, indent=4, ensure_ascii=False)
 
-# Generamos un directoro con todas las provincias e información de todas sus localidades en formato csv
+# Generamos un directorio con todas las provincias e información de todas sus localidades en formato csv
 to_csv("provincias_csv", argentina_provinces)
 
-# Generamos un directoro con todas las provincias e información de todas sus localidades en formato json
+# Generamos un directorio con todas las provincias e información de todas sus localidades en formato json
 to_json("provincias_json", argentina_provinces)
