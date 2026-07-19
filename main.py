@@ -1,5 +1,5 @@
 from provinces import argentina_provinces
-from localities import get_localitites
+from localities import get_localities
 from pathlib import Path
 import csv, json
 
@@ -13,7 +13,7 @@ def to_csv(output_dir, provinces):
 
         code = province["code"][-1]
 
-        localities = get_localitites(code)
+        localities = get_localities(code)
 
         fieldnames = localities[0].keys()
 
@@ -42,7 +42,7 @@ def to_json(output_dir, provinces):
         data = {
             "iso_3166_2": province["code"],
             "provincia": province["name"],
-            "localidades": get_localitites(code)
+            "localidades": get_localities(code)
         }
 
         filename = province["name"].replace(" ", "_").lower() + ".json"
