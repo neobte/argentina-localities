@@ -1,7 +1,7 @@
 import requests
 
 class LocalitiesError(Exception):
-    """Error específico al obtener localidades."""
+    """Error específico al obtener las localidades."""
     pass
 
 REQUEST_URL = (
@@ -57,7 +57,7 @@ def get_localities(province_code):
 
         raise LocalitiesError("La respuesta recibida no contiene un JSON válido") from e
 
-    # Validamos que realmente recibimos la lista de localidades
+    # Validamos que realmente tenemos la lista de localidades
     if not isinstance(data, list):
 
         raise LocalitiesError("La respuesta JSON no tiene el formato esperado")

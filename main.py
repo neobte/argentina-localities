@@ -9,6 +9,8 @@ def to_csv(output_dir, provinces):
 
     output_dir.mkdir(parents=True, exist_ok=True)
 
+    FIELDNAMES = ("id", "nombre", "partido", "municipio", "cp", "latitud", "longitud")
+
     for province in provinces:
 
         code = province["code"][-1]
@@ -22,15 +24,13 @@ def to_csv(output_dir, provinces):
             print(f"No se pudieron obtener las localidades: {e}")
             exit(1)
 
-        fieldnames = localities[0].keys()
-
         filename = province["name"].replace(" ", "_").lower() + ".csv"
 
         filepath = output_dir / filename
 
         with open(filepath, "w", newline="", encoding="utf-8") as file:
 
-            writer = csv.DictWriter(file, fieldnames=fieldnames, delimiter=",")
+            writer = csv.DictWriter(file, fieldnames=FIELDNAMES, extrasaction="raise")
 
             writer.writeheader()
 
@@ -56,7 +56,7 @@ def to_json(output_dir, provinces):
 
         except LocalitiesError as e:
 
-            print(f"No se pudieron obtener localidades: {e}")
+            print(f"No se pudieron obtener las localidades: {e}")
             exit(1)
 
         filename = province["name"].replace(" ", "_").lower() + ".json"

@@ -1,6 +1,4 @@
-# https://www.iso.org/obp/ui/#iso:code:3166:AR
-
-# Se eliminan los acentos de los nombres de provincia, ya que serán los nombres de archivo
+# Eliminamos los acentos de los nombres de provincia, ya que se utilizarán para los nombres de archivo
 
 argentina_provinces = [
     {"code": "AR-B", "name": "Buenos Aires"},
