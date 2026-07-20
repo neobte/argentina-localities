@@ -1,5 +1,5 @@
 from provinces import argentina_provinces
-from localities import get_localities
+from localities import get_localities, LocalitiesError
 from pathlib import Path
 import csv, json
 
@@ -13,7 +13,14 @@ def to_csv(output_dir, provinces):
 
         code = province["code"][-1]
 
-        localities = get_localities(code)
+        try:
+
+            localities = get_localities(code)
+
+        except LocalitiesError as e:
+            
+            print(f"No se pudieron obtener las localidades: {e}")
+            exit(1)
 
         fieldnames = localities[0].keys()
 
@@ -39,11 +46,18 @@ def to_json(output_dir, provinces):
 
         code = province["code"][-1]
 
-        data = {
-            "iso_3166_2": province["code"],
-            "provincia": province["name"],
-            "localidades": get_localities(code)
-        }
+        try:
+
+            data = {
+                "iso_3166_2": province["code"],
+                "provincia": province["name"],
+                "localidades": get_localities(code)
+            }
+
+        except LocalitiesError as e:
+
+            print(f"No se pudieron obtener localidades: {e}")
+            exit(1)
 
         filename = province["name"].replace(" ", "_").lower() + ".json"
 
